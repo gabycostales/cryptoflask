@@ -1,14 +1,52 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Cryptosite</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
 
-  <body>
-    {% if coin %}
-      <h1>{{ coin }}</h1>
-    {% else %}
-      <h1>Cryptosite</h1>
-    {% endif %}
-  </body>
-</html
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cryptosite</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+  <header class="mb-3">
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong>$ Cryptosite $</strong>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col">
+        <div class="card">
+          <h3 class="card-header">
+            Twitter Sentiments {{ coin }}
+          </h3>
+          <div class="card-body">
+            <!-- <canvas id="barChart"></canvas> -->
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="static/js/jquery-3.3.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/Chart.min.js"></script>
+  <script src="static/js/script.js"></script>
+</body>
+
+</html>
