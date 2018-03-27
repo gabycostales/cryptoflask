@@ -41,9 +41,15 @@ def main(coin='BTC'):
 			"avgPolarity" : { "$avg" : "$polarity" },
 			"count": { "$sum": 1 }
 		}},
-		{ "$sort": { "_id": 1 }}
+		{ "$sort": { "_id": 1 }},
+		{ "$limit": 7 }
 	]
 	# Query for average polarities by day
 	cursor = collection.aggregate(pipeline)
 	# Build array of polarites to pass
-	return render_template('index.html', coin=coin)
+	polarities = []
+	for doc in cursor:
+		polarites.append(doc['avgPolarity'])
+	print(polarities)
+	# Render page
+	return render_template('index.html', coin=coin, polarities=polarities)
