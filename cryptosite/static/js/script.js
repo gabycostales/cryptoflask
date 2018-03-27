@@ -18,7 +18,7 @@ var lineChart = new Chart(ctx, {
     labels: weekdayLabels,
     datasets: [{
       label: 'Sentiment',
-      data: [4, 5, 3, 6, 2, 7, 8],
+      data: polarities,
       backgroundColor: 'rgba(75, 192, 192, 0.2)',
       borderColor: 'rgba(75, 192, 192, 0.2)',
       borderWidth: 1
