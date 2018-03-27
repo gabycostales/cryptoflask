@@ -49,7 +49,7 @@ def main(coin='BTC'):
 	# Build array of polarites to pass
 	polarities = []
 	for doc in cursor:
-		polarites.append(doc['avgPolarity'])
+		polarities.append(doc['avgPolarity'])
 	print(polarities)
 	# Render page
 	return render_template('index.html', coin=coin, polarities=polarities)
