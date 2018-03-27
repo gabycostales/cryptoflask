@@ -15,4 +15,35 @@ app.config.from_envvar('CRYPTOSITE_SETTINGS', silent=True)
 @app.route('/')
 @app.route('/<coin>')
 def main(coin='BTC'):
+	# Select collection based on coin requested
+	if coin == 'ETH':
+		collection = db.ETH
+	else coin == 'LTC':
+		collection = db.LTC
+	else coin == 'SUMO':
+		collection = db.SUMO
+	else coin == 'TRX':
+		collection = db.TRX
+	else:
+		coin = 'BTC'
+		collection = db.BTC
+	# Pipeline for Aggreagate Query
+	pipeline = [
+		{ "$group": {
+			"_id": {
+				"day" : {
+					"$dateToString": {
+						"format": "%Y-%m-%d",
+						"date": "$timestamp"
+					}
+				}
+			},
+			"avgPolarity" : { "$avg" : "$polarity" },
+			"count": { "$sum": 1 }
+		}},
+		{ "$sort": { "_id": 1 }}
+	]
+	# Query for average polarities by day
+	cursor = collection.aggregate(pipeline)
+	# Build array of polarites to pass
 	return render_template('index.html', coin=coin)

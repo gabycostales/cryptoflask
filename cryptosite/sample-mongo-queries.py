@@ -4,20 +4,19 @@ client = MongoClient('localhost:27017')
 db = client.cryptoDB
 
 pipeline = [
-	{ "$group": { 
-		"_id": { 
+	{ "$group": {
+		"_id": {
 			"day" : {
-				"$dateToString": { 
-					"format": "%Y-%m-%d", 
-					"date": "$timestamp" 
+				"$dateToString": {
+					"format": "%Y-%m-%d",
+					"date": "$timestamp"
 				}
 			}
 		},
-		"avgPolarity" : { "$avg" : "$polarity" }, 
+		"avgPolarity" : { "$avg" : "$polarity" },
 		"count": { "$sum": 1 }
 	}},
 	{ "$sort": { "_id": 1 }}
-	  
 ]
 
 print("AVERAGE POLARITY ALL TIME")
@@ -46,4 +45,29 @@ for doc in sumoCursor:
 print("Sentiments for TRX")
 trxCursor = db.TRX.aggregate(pipeline)
 for doc in trxCursor:
+	print(doc)
+
+print("AVERAGE POLARITY PAST WEEK")
+print("=========================")
+
+weekPipeline = [
+	{ "$group": {
+		"_id": {
+			"day" : {
+				"$dateToString": {
+					"format": "%Y-%m-%d",
+					"date": "$timestamp"
+				}
+			}
+		},
+		"avgPolarity" : { "$avg" : "$polarity" },
+		"count": { "$sum": 1 }
+	}},
+	{ "$sort": { "_id": 1 }},
+	{ "$limit": 7 }
+]
+
+print("Sentiments for BTC")
+btcWeekCursor = db.BTC.aggregate(weekPipeline)
+for doc in btcWeekCursor:
 	print(doc)
