@@ -18,11 +18,11 @@ def main(coin='BTC'):
 	# Select collection based on coin requested
 	if coin == 'ETH':
 		collection = db.ETH
-	else coin == 'LTC':
+	elif coin == 'LTC':
 		collection = db.LTC
-	else coin == 'SUMO':
+	elif coin == 'SUMO':
 		collection = db.SUMO
-	else coin == 'TRX':
+	elif coin == 'TRX':
 		collection = db.TRX
 	else:
 		coin = 'BTC'
