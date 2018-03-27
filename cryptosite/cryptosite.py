@@ -52,4 +52,4 @@ def main(coin='BTC'):
 		polarities.append(doc['avgPolarity'])
 	print(polarities)
 	# Render page
-	return render_template('index.html', coin=coin, polarities=polarities)
+	return render_template('index.html', coin=coin, test="test", polarities=polarities)
