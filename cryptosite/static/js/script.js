@@ -10,7 +10,7 @@ for (var i = 6; i >= 0; i--) {
 // console.log(weekdayLabels);
 
 // Polarites for sentiment line chart
-let polarties = '{{ polarites }}';
+let polarties = '{{ polarities }}';
 console.log(polarities);
 
 // Sentiment Line Chart
