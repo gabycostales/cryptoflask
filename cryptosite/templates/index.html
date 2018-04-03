@@ -31,20 +31,23 @@
           <h3 class="card-header">
             Twitter Sentiments {{ coin }}
           </h3>
-          <div class="card-body">
-            <form method="POST" action="">
-              <div class="form-group">
-                <div class="col-sm-5">
-                  <label for="coinSelect">Coin:</label>
-                  <select class="form-control" id="coinSelect">
-                    <option value="BTC" {% if coin=='BTC' %}selected{% endif %}>BTC</option>
-                    <option value="ETH" {% if coin=='ETH' %}selected{% endif %}>ETH</option>
-                    <option value="SUMO" {% if coin=='SUMO' %}selected{% endif %}>SUMO</option>
-                    <option value="TRX" {% if coin=='TRX' %}selected{% endif %}>TRX</option>
-                    <option value="LTC" {% if coin=='LTC' %}selected{% endif %}>LTC</option>
-                  </select>
+          <div class="card-body container">
+            <div class="row">
+              <form method="POST" action="{{ url_for('/') }}">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="coinSelect">Coin:</label>
+                    <select class="form-control" id="coinSelect">
+                      <option value="BTC" {% if coin=='BTC' %}selected{% endif %}>BTC</option>
+                      <option value="ETH" {% if coin=='ETH' %}selected{% endif %}>ETH</option>
+                      <option value="SUMO" {% if coin=='SUMO' %}selected{% endif %}>SUMO</option>
+                      <option value="TRX" {% if coin=='TRX' %}selected{% endif %}>TRX</option>
+                      <option value="LTC" {% if coin=='LTC' %}selected{% endif %}>LTC</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col">
+                  <div class="form-group">
                     <label for="viewSelect">View:</label>
                     <select class="form-control" id="viewSelect">
                       <option value="day" {% if scope=='day' %}selected{% endif %}>Day</option>
@@ -52,9 +55,15 @@
                       <option value="month" {% if scope=='month' %}selected{% endif %}>Month</option>
                     </select>
                   </div>
-              </div>
-            </form>
-            <canvas id="lineChart"></canvas>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-primary">Refresh</button>
+                </div>
+              </form>
+            </div>
+            <div class="row">
+              <canvas id="lineChart"></canvas>
+            </div>
           </div>
         </div>
       </div>

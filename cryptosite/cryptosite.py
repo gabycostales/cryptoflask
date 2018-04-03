@@ -12,7 +12,7 @@ app.config.from_object(__name__)
 app.config.from_envvar('CRYPTOSITE_SETTINGS', silent=True)
 
 # Main/Index Route
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
 	# Select collection based on coin requested
 	coin = request.args.get('coin')
