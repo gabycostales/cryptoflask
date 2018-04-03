@@ -32,7 +32,28 @@
             Twitter Sentiments {{ coin }}
           </h3>
           <div class="card-body">
-            <!-- <canvas id="barChart"></canvas> -->
+            <form method="POST" action="">
+              <div class="form-group">
+                <div class="col-sm-5">
+                  <label for="coinSelect">Coin:</label>
+                  <select class="form-control" id="coinSelect">
+                    <option value="BTC" {% if coin=='BTC' %}selected{% endif %}>BTC</option>
+                    <option value="ETH" {% if coin=='ETH' %}selected{% endif %}>ETH</option>
+                    <option value="SUMO" {% if coin=='SUMO' %}selected{% endif %}>SUMO</option>
+                    <option value="TRX" {% if coin=='TRX' %}selected{% endif %}>TRX</option>
+                    <option value="LTC" {% if coin=='LTC' %}selected{% endif %}>LTC</option>
+                  </select>
+                </div>
+                <div class="col-sm-5">
+                    <label for="viewSelect">View:</label>
+                    <select class="form-control" id="viewSelect">
+                      <option value="day" {% if scope=='day' %}selected{% endif %}>Day</option>
+                      <option value="week" {% if scope=='week' %}selected{% endif %}>Week</option>
+                      <option value="month" {% if scope=='month' %}selected{% endif %}>Month</option>
+                    </select>
+                  </div>
+              </div>
+            </form>
             <canvas id="lineChart"></canvas>
           </div>
         </div>
