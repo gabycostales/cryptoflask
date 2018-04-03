@@ -29,7 +29,9 @@ var lineChart = new Chart(ctx, {
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true
+          beginAtZero: false,
+          scaleStartValue : -1,
+          scaleSteps : .2
         }
       }]
     }
