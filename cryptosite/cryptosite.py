@@ -30,7 +30,7 @@ def main():
 	# Get scope for Polarity Aggregate Query
 	scope = request.args.get('scope')
 	if scope == 'month':
-		# Pipeline for Polarity Aggreagate Query WEEK
+		# Pipeline for Polarity Aggreagate Query MONTH
 		pipeline = [
 			{ "$group": {
 				"_id": {
